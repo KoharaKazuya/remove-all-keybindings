@@ -2,7 +2,11 @@
   "name": "remove-all-keybindings",
   "main": "./lib/main",
   "version": "0.0.0",
-  "private": true,
   "description": "Removes all keybindings, such as default, platform or package keymaps.",
-  "license": "MIT"
+  "license": "MIT",
+  "private": true,
+  "repository": "https://github.com/KoharaKazuya/remove-all-keybindings",
+  "engines": {
+    "atom": ">=0.177.0"
+  }
 }
