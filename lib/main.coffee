@@ -22,13 +22,13 @@ module.exports =
 
     # sources of keybindings
     sources = []
-    for kb in atom.keymap.getKeyBindings()
+    for kb in atom.keymaps.getKeyBindings()
       sources.push kb.source unless kb.source in sources
 
     # remove keybindings from sources
     for source in sources
       unless @isExceptedSource(source)
-        atom.keymap.removeBindingsFromSource(source)
+        atom.keymaps.removeBindingsFromSource(source)
 
   isExceptedSource: (source) ->
 
