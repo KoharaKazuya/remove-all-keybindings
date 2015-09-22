@@ -16,7 +16,11 @@ module.exports =
   activate: (state) ->
     atom.packages.onDidActivatePackage =>
       @removeAllKeybindings()
-    @removeAllKeybindings()
+
+  deactivate: ->
+    message = 'Removed keybindings are not restored.'
+    detail = 'Reload keybindings by the command -- \'window:reload\''
+    atom.notifications.addWarning message, detail: detail
 
   removeAllKeybindings: ->
 
@@ -26,9 +30,8 @@ module.exports =
       sources.push kb.source unless kb.source in sources
 
     # remove keybindings from sources
-    for source in sources
-      unless @isExceptedSource(source)
-        atom.keymaps.removeBindingsFromSource(source)
+    for source in sources when not @isExceptedSource(source)
+      atom.keymaps.removeBindingsFromSource(source)
 
   isExceptedSource: (source) ->
 
