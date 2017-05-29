@@ -40,13 +40,12 @@ module.exports =
       return true
 
     if atom.config.get('remove-all-keybindings.exceptBaseKeymap') and
-       source.indexOf(path.join('app.asar', 'keymaps', 'base')) isnt -1
+       source.indexOf('core:base') isnt -1
       return true
 
     if atom.config.get('remove-all-keybindings.exceptPlatformKeymap') and
-       source.indexOf(path.join('app.asar', 'keymaps')) isnt -1 and
-       (source.indexOf('darwin') isnt -1 or source.indexOf('win32') isnt -1 or
-        source.indexOf('linux') isnt -1)
+       (source.indexOf('core:darwin') isnt -1 or source.indexOf('core:win32') isnt -1 or
+        source.indexOf('core:linux') isnt -1)
       return true
 
     return false
